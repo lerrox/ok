@@ -49,21 +49,23 @@ class OKClient {
      *  @param $message текст для заявки
      * @param $image uri какой нить картинки
      */
-    public function create($message, $image) {
+    public function create($message, $image, $id) {
         //TODO не забудьте указать картинку
         $loader = new Loader(
             self::SERVICE_URI . 'orders.json', 
             array(
                 'order' => array(
-                    'message' => $message, 
-                    'title' => $message, 
-                    'author' => 'Инкогнито И. И.', 
-                    'category_id' => self::HOUSING_CATEGORY_ID, 
-                    'lat' => '12.5', 
-                    'long' => '156.7', 
-                    'address' => 'Ямашева', 
-                    'for_house_service' => $this -> _userId, 
-                    'region' => 16, ), 
+                        'message' => $message, 
+                        'title' => $message, 
+                        'author' => 'Инкогнито И. И.', 
+                        'category_id' => self::HOUSING_CATEGORY_ID, 
+                        'lat' => '12.5', 
+                        'long' => '156.7', 
+                        'address' => 'Ямашева', 
+                        'for_house_service' => $this->_userId, 
+                        'housing_guid' =>  $id, 
+                        'region' => 16, 
+                        ), 
                     'user_id' => $this -> _userId, 
                     'token' => $this -> _token, 
                     'photo_count' => 2, 
